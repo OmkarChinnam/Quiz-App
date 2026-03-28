@@ -22,21 +22,21 @@ public class QuestionsService {
 	}
 	
 	public void startQuiz() {
+        Scanner sc = new Scanner(System.in);
 		int i = 0;
 		for(Questions que: questions) {
 			System.out.println("Question: " + que.getQuestionId());
 			System.out.println(que.getQuestion());
 			que.getOptions().printOptions();
-			Scanner sc = new Scanner(System.in);
 			System.out.print("Enter your answer: ");
 			userAnswers[i] = sc.nextLine();
-			i++;
-			for(String userChoice: userAnswers)
-				if(que.getAnswer().equalsIgnoreCase(userChoice)) {
-					score++;
-				}
 			
+			if(que.getAnswer().equalsIgnoreCase(userAnswers[i])) {
+				score++;
+				i++;
+			}
 		}
+		
 		
 		
 		
